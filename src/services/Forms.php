@@ -129,6 +129,8 @@ class Forms extends Component
             // Prep the fields for save
             $fieldLayout = $form->getFormFieldLayout();
 
+            Craft::dd($fieldLayout);
+
             foreach ($fieldLayout->getFields() as $field) {
                 $field->context = $form->getFormFieldContext();
                 $fieldsService->prepFieldForSave($field);
