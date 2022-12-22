@@ -134,6 +134,7 @@ class FormsController extends Controller
         $settings = Formie::$plugin->getSettings();
 
         $form = Formie::$plugin->getForms()->buildFormFromPost();
+        
         $duplicate = $request->getParam('duplicate');
 
         // If the user has create permissions, but not edit permissions, we can run into issues...

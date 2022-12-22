@@ -129,7 +129,7 @@ class Forms extends Component
             // Prep the fields for save
             $fieldLayout = $form->getFormFieldLayout();
 
-            Craft::dd($fieldLayout);
+            // Craft::dd($fieldLayout);
 
             foreach ($fieldLayout->getFields() as $field) {
                 $field->context = $form->getFormFieldContext();
@@ -491,6 +491,7 @@ class Forms extends Component
             $pageFields = [];
 
             $rows = ArrayHelper::getValue($pageData, 'rows', []);
+
             foreach ($rows as $rowIndex => $rowData) {
                 foreach ($rowData['fields'] as $fieldIndex => $fieldData) {
                     $settings = $fieldData['settings'];
@@ -567,6 +568,13 @@ class Forms extends Component
         $fieldLayout = new FieldLayout(['type' => $type]);
         $fieldLayout->setPages($pages);
         $fieldLayout->setFields($fields);
+
+        Craft::dd([
+            'data' => $data,
+            'fields' => $fields,
+            'pages' => $pages,
+            'fieldLayout' => $fieldLayout,
+        ], 100);
 
         return $fieldLayout;
     }
