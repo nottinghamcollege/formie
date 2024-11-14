@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.11 - 2024-11-15
+
+### Fixed
+- Fix an error for form usage, when dealing with nested entries.
+- Fix a Craft 5.5 migration compatibility issue.
+- Fix user permissions for form access in the control panel.
+
 ## 3.0.10 - 2024-11-13
 
 ### Added
