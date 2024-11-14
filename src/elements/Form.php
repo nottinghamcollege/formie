@@ -2104,7 +2104,7 @@ class Form extends Element
 
         // Check if the user has permission to edit this form
         if ($userSession && !$userSession->checkPermission('formie-manageForms')) {
-            if (!$userSession->checkPermission('formie-manageForm:' . $this->uid)) {
+            if (!$userSession->checkPermission('formie-manageForms:' . $this->uid)) {
                 return null;
             }
         }
