@@ -50,6 +50,12 @@ abstract class NestedField extends Field implements NestedFieldInterface
         return StringHelper::toLowerCase(static::displayName());
     }
 
+    public static function defaultCardAttributes(): array
+    {
+        // Legacy setting for Craft 5 migration. Remove at the next breakpoint
+        return [];
+    }
+
     public static function queryCondition(array $instances, mixed $value, array &$params): ?array
     {
         $param = QueryParam::parse($value);
