@@ -6,7 +6,7 @@
 {% set formSettings = integration.getFormSettings().getSettings() %}
 {% set activateUser = form.settings.integrations[handle].activateUser ?? false %}
 {% set mergeUserGroups = form.settings.integrations[handle].mergeUserGroups ?? false %}
-{% set sendActivationEmail = form.settings.integrations[handle].sendActivationEmail ?? true %}
+{% set sendActivationEmail = form.settings.integrations[handle].sendActivationEmail ?? false %}
 {% set groupIds = form.settings.integrations[handle].groupIds ?? [] %}
 
 <field-select
