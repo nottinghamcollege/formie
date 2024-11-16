@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.12 - 2024-11-16
+
+### Fixed
+- Fix an error for form usage, when dealing with nested entries.
+
 ## 3.0.11 - 2024-11-15
 
 ### Fixed
