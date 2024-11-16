@@ -83,6 +83,7 @@ class FileUpload extends ElementField
     // Properties
     // =========================================================================
 
+    public bool $allowMultipleSources = false;
     public ?string $sizeLimit = null;
     public ?string $sizeMinLimit = null;
     public ?string $limitFiles = null;

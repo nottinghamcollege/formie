@@ -660,10 +660,30 @@ abstract class ElementField extends Field implements ElementFieldInterface
 
     protected function availableSources(): array
     {
-        return ArrayHelper::where(
+        $sources = ArrayHelper::where(
             Craft::$app->getElementSources()->getSources(static::elementType(), 'modal'),
             fn($s) => $s['type'] !== ElementSources::TYPE_HEADING
         );
+
+        // Ensure that we always include a "All" option, even if people are removing it from sources in events
+        if ($this->allowMultipleSources) {
+            $hasAllSource = false;
+
+            foreach ($sources as $key => $source) {
+                if (isset($source['key']) && $source['key'] === '*') {
+                    $hasAllSource = true;
+                }
+            }
+
+            if (!$hasAllSource) {
+                array_unshift($sources, [
+                    'key' => '*',
+                    'label' => Craft::t('formie', 'All'),
+                ]);
+            }
+        }
+
+        return $sources;
     }
 
     protected function setPrePopulatedValue(mixed $value): array
