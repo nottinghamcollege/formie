@@ -625,13 +625,13 @@ class Submission extends CustomElement
 
         // Return all values for a field for a given type. Includes nested fields like Group/Repeater.
         foreach ($this->getFields() as $field) {
-            if (get_class($field) === $type) {
+            if ($field instanceof $type) {
                 $fieldValues[$field->handle] = $this->getFieldValue($field->handle);
             }
 
             if ($field instanceof SingleNestedFieldInterface) {
                 foreach ($field->getFields() as $nestedField) {
-                    if (get_class($nestedField) === $type) {
+                    if ($nestedField instanceof $type) {
                         $fieldKey = "$field->handle.$nestedField->handle";
 
                         $fieldValues[$fieldKey] = $this->getFieldValue($fieldKey);
@@ -644,7 +644,7 @@ class Submission extends CustomElement
 
                 foreach ($value as $rowKey => $row) {
                     foreach ($this->getFields() as $nestedField) {
-                        if (get_class($nestedField) === $type) {
+                        if ($nestedField instanceof $type) {
                             $fieldKey = "$field->handle.$rowKey.$nestedField->handle";
 
                             $fieldValues[$fieldKey] = $this->getFieldValue($fieldKey);
