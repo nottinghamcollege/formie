@@ -66,6 +66,7 @@ use GraphQL\Type\Definition\Type;
 use yii\base\Event;
 use yii\base\InvalidConfigException;
 use yii\db\Expression;
+use yii\db\ExpressionInterface;
 use yii\validators\NumberValidator;
 
 abstract class ElementField extends Field implements ElementFieldInterface
@@ -74,6 +75,33 @@ abstract class ElementField extends Field implements ElementFieldInterface
     // =========================================================================
 
     abstract public static function elementType(): string;
+
+    public static function queryCondition(array $instances, mixed $value, array &$params): array|string|ExpressionInterface|false|null
+    {
+        $values = [];
+
+        if (is_array($value)) {
+            foreach ($value as $element) {
+                if ($element instanceof ElementInterface) {
+                    $values[] = $element->id;
+                }
+
+                if (is_int($element)) {
+                    $values[] = $element;
+                }
+            }
+        }
+
+        if ($value instanceof ElementInterface) {
+            $values[] = $value->id;
+        }
+
+        if (is_int($value)) {
+            $values[] = $value;
+        }
+
+        return parent::queryCondition($instances, Json::encode($values), $params);
+    }
 
 
     // Constants

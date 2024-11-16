@@ -137,7 +137,8 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
         return Schema::TYPE_TEXT;
     }
 
-    public static function queryCondition(array $instances, mixed $value, array &$params): array|string|ExpressionInterface|false|null {
+    public static function queryCondition(array $instances, mixed $value, array &$params): array|string|ExpressionInterface|false|null
+    {
         $valueSql = static::valueSql($instances);
 
         if ($valueSql === null) {
