@@ -2,7 +2,7 @@
     <tr class="fui-notification-row">
         <td class="flex">
             <a href="#" class="flex" style="--s: 0;" :class="{ 'error': hasError }" @click.prevent="openModal">
-                <span class="status" :class="{ 'on': !!+notification.enabled }"></span>
+                <span class="status" :class="(notification.enabled ? 'on' : 'disabled')"></span>
                 <strong><FormKit type="variableText" variables="plainTextVariables" :value="notification.name" readonly="true" /></strong>
             </a>
 
